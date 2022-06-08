@@ -5,8 +5,6 @@ class Objeto {
     this.ancho = ancho;
     this.alto = alto;
     this.imagen = imagen;
-    this.direccionX = "izquierda";
-    this.direccionY = "abajo";
     this.ctx = ctx;
   }
 

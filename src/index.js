@@ -37,7 +37,7 @@ const cargaInicial = () => {
     pelota.dibujar();
   };
 
-  setInterval(moverPelota, 40);
+  setInterval(moverPelota, 20);
 };
 
 const logKey = (e) => {
