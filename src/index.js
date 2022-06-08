@@ -9,8 +9,8 @@ pelotaImage.src = "src/Pelota.png";
 let palaImage = new Image();
 palaImage.src = "src/Pala.png";
 
-let pala = new Pala(200, 500, 200, 100, palaImage);
-let pelota = new Pelota(100, 200, 30, 30, pelotaImage);
+let pala = new Pala(200, 500, 200, 100, palaImage, ctx);
+let pelota = new Pelota(100, 200, 30, 30, pelotaImage, 10, ctx);
 
 const cargaInicial = () => {
   pala.dibujar();
@@ -26,12 +26,14 @@ const cargaInicial = () => {
 
   const moverPelota = () => {
     pelota.borrar();
-    pelota.comprobarRebote();
+    pelota.moverPelota();
+    console.log(pelota.comprobarPosicionEnCanvas());
+    console.log(pala.detectarColision(pelota));
     detectarColision();
     pelota.dibujar();
   };
 
-  setInterval(moverPelota, 20);
+  setInterval(moverPelota, 200);
 };
 
 const logKey = (e) => {
