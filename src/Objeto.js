@@ -5,7 +5,7 @@ class Objeto {
     this.ancho = ancho;
     this.alto = alto;
     this.imagen = imagen;
-    this.direccionX = "derecha";
+    this.direccionX = "izquierda";
     this.direccionY = "abajo";
     this.ctx = ctx;
   }
@@ -30,6 +30,23 @@ class Objeto {
     }
     if (this.x + this.ancho < otroObjeto.x) {
       return "";
+    }
+
+    if (otroObjeto.y + otroObjeto.alto === this.y) {
+      return "colision-superior";
+    }
+
+    if (otroObjeto.x + otroObjeto.ancho === this.x) {
+      return "colision-izquierda";
+    }
+
+    if (otroObjeto.x === this.x + this.ancho) {
+      return "colision-derecha";
+    }
+
+    if (this.y + this.alto === otroObjeto.y) {
+      //Por probar
+      return "colision-inferior";
     }
 
     return "colision";

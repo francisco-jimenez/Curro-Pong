@@ -9,18 +9,22 @@ pelotaImage.src = "src/Pelota.png";
 let palaImage = new Image();
 palaImage.src = "src/Pala.png";
 
-let pala = new Pala(200, 500, 200, 100, palaImage, ctx);
-let pelota = new Pelota(100, 200, 30, 30, pelotaImage, 10, ctx);
+let pala = new Pala(200, 500, 200, 100, palaImage, 10, ctx);
+let pelota = new Pelota(300, 200, 30, 30, pelotaImage, 10, ctx);
 
 const cargaInicial = () => {
   pala.dibujar();
   pelota.dibujar();
 
-  const detectarColision = () => {
-    if (pelota.y == 470) {
-      if (pala.x < pelota.x && pala.x + pala.ancho > pelota.x) {
-        pelota.direccionY = "arriba";
-      }
+  const cambiarDireccionSiColision = () => {
+    if (pala.detectarColision(pelota) === "colision-superior") {
+      pelota.direccionY = "arriba";
+    }
+    if (pala.detectarColision(pelota) === "colision-izquierda") {
+      pelota.direccionX = "izquierda";
+    }
+    if (pala.detectarColision(pelota) === "colision-derecha") {
+      pelota.direccionX = "derecha";
     }
   };
 
@@ -29,11 +33,11 @@ const cargaInicial = () => {
     pelota.moverPelota();
     console.log(pelota.comprobarPosicionEnCanvas());
     console.log(pala.detectarColision(pelota));
-    detectarColision();
+    cambiarDireccionSiColision();
     pelota.dibujar();
   };
 
-  setInterval(moverPelota, 200);
+  setInterval(moverPelota, 40);
 };
 
 const logKey = (e) => {
