@@ -6,12 +6,12 @@ class Pala extends Objeto {
 
   moverPala(key) {
     if (key === "ArrowLeft") {
-      if (this.x > 0) {
+      if (this.comprobarPosicionEnCanvas() !== "izquierda") {
         this.x = this.x - this.desplazamiento;
       }
     }
     if (key === "ArrowRight") {
-      if (this.x < 400) {
+      if (this.comprobarPosicionEnCanvas() !== "derecha") {
         this.x = this.x + this.desplazamiento;
       }
     }
